@@ -14,7 +14,7 @@ export const CreateRoom = () => {
 
     return ( 
         <main className="h-screen flex items-center justify-center px-4">
-            <div className="max-w-[450px] flex-col gap-6">
+            <div className="max-w-[450px] flex flex-col gap-6">
                 <img src={amaLogo} alt="AMA" className="h-10"/>
 
                 <p className="leading-relaxed text-zinc-300 text-center">
