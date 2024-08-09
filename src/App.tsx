@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { CreateRoom } from "./pages/create-room"
+import { Toaster } from "sonner"
+
 import { Room } from "./pages/room"
+import { CreateRoom } from "./pages/create-room"
 
 export const App = () => {
 
@@ -16,7 +18,10 @@ export const App = () => {
   ])
 
   return (
-    <RouterProvider router={router}/>
+    <>
+      <RouterProvider router={router}/>
+      <Toaster invert richColors />
+    </>
   )
 }
 
