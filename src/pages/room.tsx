@@ -1,10 +1,28 @@
 import { useParams } from "react-router-dom"
 import { ArrowRight, ArrowUp, Share2 } from "lucide-react"
+import { toast } from "sonner"
 
 import amaLogo from "../assets/ama-logo.svg"
 
 export const Room = () => {
     const { roomId } = useParams()
+
+    const handleShareRoom =() => {
+        const url = window.location.href.toString()
+
+        if(navigator.share !== undefined && navigator.canShare()) {
+            navigator.share({
+                title: "Join AMA with us!",
+                text: `Check out this new room code: ${roomId}. Join us to ask questions, share answers, and learn from others!`,
+                url: url
+            }).then(() => console.log("Share was successful!"))
+             .catch((error) => console.log("Error sharing:", error));
+        } else {
+            navigator.clipboard.writeText(url)
+            
+            toast.info("The room url was copied to clipboard")
+        }
+    }
 
     const handleCreateQuestion =() => {}
     
@@ -17,7 +35,11 @@ export const Room = () => {
                     Room code: <span className="text-zinc-300">{roomId}</span>
                 </span>
 
-                <button type="submit" className="bg-zinc-800 text-zinc-300 px-3 py-1.5 gap-1.5 flex items-center rounded-lg font-medium text-sm transition-colors hover:bg-zinc-700">
+                <button 
+                    type="submit"
+                    onClick={handleShareRoom} 
+                    className="bg-zinc-800 text-zinc-300 px-3 py-1.5 gap-1.5 flex items-center rounded-lg font-medium text-sm transition-colors hover:bg-zinc-700"
+                >
                     Share
                     <Share2 className="size-4"/>
                 </button>
