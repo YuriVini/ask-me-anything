@@ -2,14 +2,27 @@ import { ArrowRight } from "lucide-react"
 
 import amaLogo from "../assets/ama-logo.svg"
 import { useNavigate } from "react-router-dom"
+import { createRoom } from "../http/create-room"
+import { toast } from "sonner"
 
 export const CreateRoom = () => {
     const navigate = useNavigate()
 
-    const handleCreateRoom = (data: FormData) => {
+    const handleCreateRoom = async (data: FormData) => {
         const theme = data.get("theme")?.toString()
         
-        navigate(`/room/${theme}`)
+        if(!theme) {
+            toast.warning("Please enter a room name.")
+            return
+        }
+
+        try {
+            const { roomId } = await createRoom({ theme })
+            
+            navigate(`/room/${roomId}`)
+        } catch {
+            toast.error("Something went wrong when tried to create room!")
+        }
     }
 
     return ( 
@@ -22,7 +35,8 @@ export const CreateRoom = () => {
                 </p>
 
                 <form action={handleCreateRoom} className="flex items-center gap-2 bg-zinc-900 p-2 rounded-xl border border-zinc-800 ring-orange-400 ring-offset-2 ring-offset-zinc-950  focus-within:ring-1">
-                    <input 
+                    <input
+                        required
                         type="text" 
                         name="theme" 
                         autoComplete="off" 
