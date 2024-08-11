@@ -1,8 +1,10 @@
+import { Suspense } from "react"
 import { useParams } from "react-router-dom"
 import { Share2 } from "lucide-react"
 import { toast } from "sonner"
 
 import amaLogo from "../assets/ama-logo.svg"
+import { MessageList } from "../components/message-list"
 import { CreateMessageForm } from "../components/create-message-form"
 
 export const Room = () => {
@@ -25,7 +27,6 @@ export const Room = () => {
         }
     }
 
-    const handleCreateQuestion =() => {}
     
     return (
         <div className="mx-auto max-w-[640px] flex flex-col gap-6 py-10 px-4">
@@ -49,6 +50,10 @@ export const Room = () => {
             <div className="h-px w-full bg-zinc-900"/>
 
             <CreateMessageForm />
+
+            <Suspense fallback={<p>Carregando...</p>}>
+                <MessageList />
+            </Suspense>
         </div>
     )
 }
