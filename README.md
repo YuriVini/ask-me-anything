@@ -49,3 +49,12 @@ $ npm install
 $ npm run start
 ```
 Go to http://localhost:XXXX/ to see the result.
+
+# :closed_book: License
+
+Released in 2024 :closed_book: License
+
+Made with love by [Yuri Vincius](https://github.com/YuriVini) 🚀.
+
+
+Give a ⭐️ if this project helped you!
