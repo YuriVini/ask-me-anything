@@ -16,3 +16,36 @@ This project was made using the follow technologies:
 * [React Query](https://tanstack.com/query/latest)
 * [Tailwind](https://tailwindcss.com)
 * [Golang](https://go.dev)
+
+### :construction_worker: How to run
+```bash
+# Clone Repository
+$ git clone git@github.com:YuriVini/ask-me-anything.git
+```
+### 📦 Run API
+
+```bash
+# Go to server folder
+$ cd go-websocket
+
+# Install Dependencies
+$ go mod tidy
+
+# Run Aplication
+$ go run cmd/websocket/main.go
+```
+Access API at http://localhost:XXXX/
+
+### 💻 Run Web Project
+
+```bash
+# Go to web folder
+$ cd ask-me-anything
+
+# Install Dependencies
+$ npm install
+
+# Run Aplication
+$ npm run start
+```
+Go to http://localhost:XXXX/ to see the result.
